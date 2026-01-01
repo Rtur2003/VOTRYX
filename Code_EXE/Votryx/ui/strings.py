@@ -1,6 +1,75 @@
 """UI text constants for the VOTRYX interface."""
 
-STRINGS = {
+from typing import List, TypedDict
+
+
+class StringsDict(TypedDict):
+    """Typed dictionary for UI strings."""
+
+    header_title: str
+    header_subtitle: str
+    state_idle: str
+    section_status: str
+    stat_votes: str
+    stat_errors: str
+    stat_state: str
+    stat_runtime: str
+    section_settings: str
+    section_general: str
+    label_target_url: str
+    helper_target_url: str
+    label_vote_interval: str
+    helper_vote_interval: str
+    label_batch_size: str
+    helper_batch_size: str
+    label_timeout: str
+    helper_timeout: str
+    label_max_errors: str
+    helper_max_errors: str
+    label_backoff: str
+    helper_backoff: str
+    label_backoff_cap: str
+    helper_backoff_cap: str
+    label_parallel: str
+    helper_parallel: str
+    toggle_headless: str
+    toggle_auto_driver: str
+    helper_headless: str
+    section_advanced: str
+    toggle_random_ua: str
+    helper_random_ua: str
+    toggle_block_images: str
+    helper_block_images: str
+    label_user_agents: str
+    helper_user_agents: str
+    label_vote_selectors: str
+    helper_vote_selectors: str
+    button_apply: str
+    button_defaults: str
+    section_log: str
+    badge_success: str
+    badge_errors: str
+    toggle_autoscroll: str
+    toggle_errors_only: str
+    button_clear_log: str
+    section_actions: str
+    button_start: str
+    button_stop: str
+    button_preflight: str
+    button_open_logs: str
+    button_reset_counters: str
+    button_tray: str
+    welcome_title: str
+    welcome_subtitle: str
+    welcome_bullets: List[str]
+    welcome_cta: str
+    tutorial_title: str
+    tutorial_subtitle: str
+    tutorial_steps: List[str]
+    tutorial_cta: str
+
+
+STRINGS: StringsDict = {
     "header_title": "VOTRYX Control Panel",
     "header_subtitle": "Automated voting controller",
     "state_idle": "Idle",
