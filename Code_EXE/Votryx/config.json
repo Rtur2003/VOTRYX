@@ -9,13 +9,18 @@
     "batch_size": 2,
     "max_errors": 3,
     "parallel_workers": 2,
-    "headless": true,
-    "timeout_seconds": 30,
-    "use_selenium_manager": false,
+    "headless": false,
+    "timeout_seconds": 45,
+    "use_selenium_manager": true,
     "use_random_user_agent": true,
-    "block_images": true,
+    "block_images": false,
     "user_agents": [],
-    "vote_selectors": [],
+    "vote_selectors": [
+        "css:a.btn-vote",
+        "css:a.voteButton",
+        "css:.btn.btn-vote",
+        "css:a[data-songid]"
+    ],
     "backoff_seconds": 5.0,
     "backoff_cap_seconds": 60.0
 }
