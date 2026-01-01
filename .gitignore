@@ -61,3 +61,4 @@ dmypy.json
 .claude
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints/
+nul
