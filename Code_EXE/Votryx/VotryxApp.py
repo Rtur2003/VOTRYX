@@ -999,14 +999,17 @@ window.chrome.runtime = {};
             pass
 
     def show_welcome(self):
+        """Display the welcome onboarding screen."""
         self._log_action("show_welcome")
         self._show_view("welcome")
 
     def show_tutorial(self):
+        """Display the tutorial onboarding screen."""
         self._log_action("show_tutorial")
         self._show_view("tutorial")
 
     def show_panel(self):
+        """Display the main control panel."""
         self._log_action("show_panel")
         self._show_view("panel")
 
