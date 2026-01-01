@@ -346,15 +346,19 @@ class VotryxApp:
 
     def _build_vote_selectors(self, custom_selectors):
         defaults = [
+            # DistroKid Spotlight specific selectors
+            (By.CSS_SELECTOR, "a.btn-vote"),
+            (By.CSS_SELECTOR, "a.voteButton"),
+            (By.CSS_SELECTOR, ".btn.btn-vote"),
+            (By.CSS_SELECTOR, "a[data-songid]"),
+            (By.CSS_SELECTOR, "a.btn-vote.voteButton"),
+            # Generic vote button selectors
             (By.CSS_SELECTOR, "a[data-action='vote']"),
             (By.CSS_SELECTOR, "button[data-action='vote']"),
-            (By.CSS_SELECTOR, "a[href*='/vote'][role='button']"),
+            (By.XPATH, "//a[contains(@class, 'btn-vote')]"),
+            (By.XPATH, "//a[contains(@class, 'voteButton')]"),
             (By.XPATH, "//a[contains(translate(., 'VOTE', 'vote'), 'vote')]"),
             (By.XPATH, "//button[contains(translate(., 'VOTE', 'vote'), 'vote')]"),
-            (
-                By.XPATH,
-                "//*[@id='distroListContainer']//a[contains(@class,'vote') or contains(@href,'/vote')]",
-            ),
         ]
         selectors = list(defaults)
         for raw in custom_selectors or []:
