@@ -58,4 +58,6 @@ dmypy.json
 # Type checking
 .pyre/
 .pytype/
-
+.claude
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
