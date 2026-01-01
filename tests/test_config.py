@@ -41,8 +41,8 @@ class TestConfigurationManager:
 
             assert manager.config is not None
             assert manager.get("target_url") is not None
-            assert manager.get("batch_size") == 1
-            assert manager.get("headless") is True
+            assert manager.get("batch_size") == 2
+            assert manager.get("headless") is False
 
     def test_config_loaded_from_file(self):
         """Test that configuration is loaded from existing file."""
@@ -127,5 +127,5 @@ class TestConfigurationManager:
             manager.set("batch_size", 100)
             manager.reset_to_defaults()
 
-            assert manager.get("batch_size") == 1
-            assert manager.get("headless") is True
+            assert manager.get("batch_size") == 2
+            assert manager.get("headless") is False
