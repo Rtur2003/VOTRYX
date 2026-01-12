@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir /s \"C:\\Users\\MONSTER\\Desktop\\VOTRYX\")",
+      "Bash(python -m pytest:*)",
+      "Bash(python -m flake8:*)",
+      "Bash(python -m mypy:*)",
+      "Bash(pip install:*)",
+      "Bash(python -m black:*)",
+      "Bash(python -m isort:*)",
+      "Bash(python:*)",
+      "Bash(dir:*)",
+      "WebFetch(domain:distrokid.com)",
+      "Bash(findstr:*)",
+      "Bash(rm:*)"
+    ]
+  }
+}
