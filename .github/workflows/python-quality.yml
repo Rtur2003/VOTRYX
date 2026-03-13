@@ -1,6 +1,8 @@
 name: Python Quality Checks
 
 on:
+  schedule:
+    - cron: "0 3 * * *"
   push:
     branches: [ main, develop, copilot/** ]
   pull_request:
