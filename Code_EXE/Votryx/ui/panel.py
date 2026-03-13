@@ -10,6 +10,7 @@ class ControlPanelView(ttk.Frame):
     """Primary control panel view."""
 
     def __init__(self, app, parent):
+        """Initialize the control panel view."""
         super().__init__(parent, style="Main.TFrame", padding=16)
         self.app = app
         self.colors = app.colors

@@ -229,7 +229,10 @@ class _BaseOnboardingView(tk.Frame):
 
 
 class WelcomeView(_BaseOnboardingView):
+    """Welcome screen displayed on first launch."""
+
     def __init__(self, app, parent):
+        """Initialize the welcome view."""
         hero = app.hero_image or app.brand_image
         super().__init__(
             app,
@@ -244,7 +247,10 @@ class WelcomeView(_BaseOnboardingView):
 
 
 class TutorialView(_BaseOnboardingView):
+    """Tutorial screen with quick start instructions."""
+
     def __init__(self, app, parent):
+        """Initialize the tutorial view."""
         super().__init__(
             app,
             parent,

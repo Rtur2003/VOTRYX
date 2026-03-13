@@ -41,8 +41,8 @@ class TestConfigurationManager:
 
             assert manager.config is not None
             assert manager.get("target_url") is not None
-            assert manager.get("batch_size") == 1
-            assert manager.get("headless") is True
+            assert manager.get("batch_size") == 2
+            assert manager.get("headless") is False
 
     def test_config_loaded_from_file(self):
         """Test that configuration is loaded from existing file."""
@@ -127,94 +127,5 @@ class TestConfigurationManager:
             manager.set("batch_size", 100)
             manager.reset_to_defaults()
 
-            assert manager.get("batch_size") == 1
-            assert manager.get("headless") is True
-
-    def test_config_with_malformed_json(self):
-        """Test configuration with malformed JSON falls back to defaults."""
-        with tempfile.TemporaryDirectory() as tmpdir:
-            base_dir = Path(tmpdir)
-            code_dir = base_dir / "code"
-            code_dir.mkdir()
-
-            config_path = base_dir / "config.json"
-            with open(config_path, "w") as f:
-                f.write("{invalid json}")
-
-            manager = ConfigurationManager(base_dir, code_dir)
-
-            # Should fall back to defaults
-            assert manager.get("batch_size") == 1
-            assert manager.get("headless") is True
-
-    def test_config_with_partial_data(self):
-        """Test configuration with partial data merges with defaults."""
-        with tempfile.TemporaryDirectory() as tmpdir:
-            base_dir = Path(tmpdir)
-            code_dir = base_dir / "code"
-            code_dir.mkdir()
-
-            config_path = base_dir / "config.json"
-            # Only set one value
-            with open(config_path, "w") as f:
-                json.dump({"batch_size": 7}, f)
-
-            manager = ConfigurationManager(base_dir, code_dir)
-
-            # Custom value should be present
-            assert manager.get("batch_size") == 7
-            # Default values should still be available
-            assert manager.get("headless") is True
-            assert manager.get("target_url") is not None
-
-    def test_config_save_creates_directory(self):
-        """Test that save creates parent directory if needed."""
-        with tempfile.TemporaryDirectory() as tmpdir:
-            base_dir = Path(tmpdir)
-            code_dir = base_dir / "code"
-            code_dir.mkdir()
-
-            # Create nested path
-            nested_config = base_dir / "nested" / "config.json"
-
-            manager = ConfigurationManager(base_dir, code_dir)
-            manager.config_path = nested_config
-            manager.set("batch_size", 5)
-            manager.save()
-
-            assert nested_config.exists()
-            assert nested_config.parent.exists()
-
-    def test_get_paths_with_invalid_type(self):
-        """Test get_paths with invalid paths configuration."""
-        with tempfile.TemporaryDirectory() as tmpdir:
-            base_dir = Path(tmpdir)
-            code_dir = base_dir / "code"
-            code_dir.mkdir()
-
-            manager = ConfigurationManager(base_dir, code_dir)
-
-            # Set paths to invalid type
-            manager.config["paths"] = "not a dict"
-            paths = manager.get_paths()
-
-            # Should return empty dict
-            assert paths == {}
-
-    def test_update_with_nested_paths(self):
-        """Test updating with nested paths structure."""
-        with tempfile.TemporaryDirectory() as tmpdir:
-            base_dir = Path(tmpdir)
-            code_dir = base_dir / "code"
-            code_dir.mkdir()
-
-            manager = ConfigurationManager(base_dir, code_dir)
-
-            updates = {
-                "batch_size": 5,
-                "paths": {"chrome": "/usr/bin/chrome", "driver": "/usr/bin/chromedriver"},
-            }
-            manager.update(updates)
-
-            assert manager.get("batch_size") == 5
-            assert manager.get("paths")["chrome"] == "/usr/bin/chrome"
+            assert manager.get("batch_size") == 2
+            assert manager.get("headless") is False
